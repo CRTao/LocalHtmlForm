@@ -1,51 +1,89 @@
 <!doctype html>
-
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            background-color: #fafafa;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #sel_lang {
+            color: black;
+            float: right;
+            height: 40px;
+            width: 120px;
+            text-indent: 4px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    	div {
+            padding: 10px;
+            overflow: hidden;
+        }
+        select[data-output]{
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        label {
+            display: inline-block;
+            width: 60px; 
+        }
+    	#cn{
+            width: 400px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #pw1, #pw2, #al1, #al2{
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type=button]{ 
+            width: auto;
+            float: right;
+            cursor: pointer;
+            padding: 7px;
+            border-radius: 4px;
+        }
+    </style>
   </head>
 
   <body>
     <div>
-      <h2>Sample</h2>
-    </div>
-    <div>
+      <h2>░▒▓ &nbsp; PDF Log Configuration Tool</h2>
       <select id="sel_lang">
-        <option value="en" selected="" >English</option>
-        <option value="de">German</option>
-        <option value="fr">French</option>
-        <option value="it">Italy</option>
-        <option value="es">Spanish</option>
-        <option value="pt">Portuguese</option>
+        <option value="en" selected="" >🌐&nbsp;English</option>
+        <option value="de">🌐&nbsp;German</option>
+        <option value="fr">🌐&nbsp;French</option>
+        <option value="it">🌐&nbsp;Italy</option>
+        <option value="es">🌐&nbsp;Spanish</option>
+        <option value="pt">🌐&nbsp;Portuguese</option>
       </select>
     </div>
     <hr/>
 
     <div>
       <label data-translate="label.SampleRate">en_SR:</label> 
-      <select data-output op="op_SR" id="op_SR">
-      </select>
+      <select data-output op="op_SR" id="op_SR"></select>
     </div>
     <div>
       <label data-translate="label.AlarmType">en_AT:</label> 
-      <select data-output op="op_AT" id="op_AT">
-      </select>
+      <select data-output op="op_AT" id="op_AT"></select>
     </div>
     <div>
       <label data-translate="label.StartDelay">en_SD:</label> 
-      <select data-output op="op_SD" id="op_SD">
-      </select>
+      <select data-output op="op_SD" id="op_SD"></select>
     </div>
     <div>
       <label data-translate="label.AlarmDelay">en_AD:</label> 
-      <select data-output op="op_AD" id="op_AD">
-      </select>
+      <select data-output op="op_AD" id="op_AD"></select>
     </div>
     <div>
       <label data-translate="label.TempUnit">en_TU:</label> 
-      <select data-output op="op_TU" id="op_TU">
-      </select>
+      <select data-output op="op_TU" id="op_TU"></select>
     </div>
     <div>
       <label data-translate="label.AlarmLimit">en_AL:</label> 
@@ -54,14 +92,15 @@
     </div>
     <div>
       <label data-translate="label.Password">en_PW:</label> 
-      <select data-output op="op_PW" id="op_PW">
-      </select>
+      <select data-output op="op_PW" id="op_PW"></select>
+        <div></div>
         <input data-output type="text" value=" " id="pw1">
         <input data-output type="text" value=" " id="pw2">
     </div>
     <div>
-      <span data-translate="label.CompanyName">en_CN:</span>
-      <input data-output type="text" value="My Company" id="d1">
+      <label data-translate="label.CompanyName">en_CN:</label>
+      <div></div>
+      <input data-output type="text" value="My Company" id="cn">
     </div>
 
       <div>
