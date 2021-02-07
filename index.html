@@ -1,0 +1,217 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Form</title>
+  </head>
+
+  <body>
+    <div>
+      <h2>Sample</h2>
+    </div>
+    <div>
+      <select id="sel_lang">
+        <option value="en" selected="" >English</option>
+        <option value="de">German</option>
+        <option value="fr">French</option>
+        <option value="it">Italy</option>
+        <option value="es">Spanish</option>
+        <option value="pt">Portuguese</option>
+      </select>
+    </div>
+    <hr/>
+
+    <div>
+      <label data-translate="label.SampleRate">en_SR:</label> 
+      <select data-output op="op_SR" id="op_SR">
+      </select>
+    </div>
+    <div>
+      <label data-translate="label.AlarmType">en_AT:</label> 
+      <select data-output op="op_AT" id="op_AT">
+      </select>
+    </div>
+    <div>
+      <label data-translate="label.StartDelay">en_SD:</label> 
+      <select data-output op="op_SD" id="op_SD">
+      </select>
+    </div>
+    <div>
+      <label data-translate="label.AlarmDelay">en_AD:</label> 
+      <select data-output op="op_AD" id="op_AD">
+      </select>
+    </div>
+    <div>
+      <label data-translate="label.TempUnit">en_TU:</label> 
+      <select data-output op="op_TU" id="op_TU">
+      </select>
+    </div>
+    <div>
+      <label data-translate="label.AlarmLimit">en_AL:</label> 
+        <input data-output type="text" value=" " id="al1">
+        <input data-output type="text" value=" " id="al2">
+    </div>
+    <div>
+      <label data-translate="label.Password">en_PW:</label> 
+      <select data-output op="op_PW" id="op_PW">
+      </select>
+        <input data-output type="text" value=" " id="pw1">
+        <input data-output type="text" value=" " id="pw2">
+    </div>
+    <div>
+      <span data-translate="label.CompanyName">en_CN:</span>
+      <input data-output type="text" value="My Company" id="d1">
+    </div>
+
+      <div>
+          <input type="button" id="bt" value="Save data to file" onclick="saveFile()"/>
+      </div>
+
+    <script type="text/javascript">
+      // Variable
+      var en_json = { label: { SampleRate: "en_SR", AlarmType: "en_AT", StartDelay: "en_SD", AlarmDelay: "en_AD", TempUnit: "en_TU", AlarmLimit: "en_AL", Password: "en_PW", CompanyName: "en_CN", },
+                      option:{ op_SR: ["-- Please en Select --", "★en", "★en★", "★en★★", "★★en★★"],
+                               op_AT: ["-- Please en Select --", "★en", "★en★", "★en★★", "★★en★★"],
+                               op_SD: ["-- Please en Select --", "★en", "★en★", "★en★★", "★★en★★"],
+                               op_AD: ["-- Please en Select --", "★en", "★en★", "★en★★", "★★en★★"],
+                               op_TU: ["-- Please en Select --", "★en", "★en★", "★en★★", "★★en★★"],
+                               op_PW: ["-- Please en Select --", "★en", "★en★", "★en★★", "★★en★★"],
+                               op_CN: ["-- Please en Select --", "★en", "★en★", "★en★★", "★★en★★"],}};
+      var de_json = { label: { SampleRate: "de_SR", AlarmType: "de_AT", StartDelay: "de_SD", AlarmDelay: "de_AD", TempUnit: "de_TU", AlarmLimit: "de_AL", Password: "de_PW", CompanyName: "de_CN", },
+                      option:{ op_SR: ["-- Please de Select --", "★de", "★de★", "★de★★", "★★de★★"],
+                               op_AT: ["-- Please de Select --", "★de", "★de★", "★de★★", "★★de★★"],
+                               op_SD: ["-- Please de Select --", "★de", "★de★", "★de★★", "★★de★★"],
+                               op_AD: ["-- Please de Select --", "★de", "★de★", "★de★★", "★★de★★"],
+                               op_TU: ["-- Please de Select --", "★de", "★de★", "★de★★", "★★de★★"],
+                               op_PW: ["-- Please de Select --", "★de", "★de★", "★de★★", "★★de★★"],
+                               op_CN: ["-- Please de Select --", "★de", "★de★", "★de★★", "★★de★★"],}};
+      var fr_json = { label: { SampleRate: "fr_SR", AlarmType: "fr_AT", StartDelay: "fr_SD", AlarmDelay: "fr_AD", TempUnit: "fr_TU", AlarmLimit: "fr_AL", Password: "fr_PW", CompanyName: "fr_CN", },
+                      option:{ op_SR: ["-- Please fr Select --", "★fr", "★fr★", "★fr★★", "★★fr★★"],
+                               op_AT: ["-- Please fr Select --", "★fr", "★fr★", "★fr★★", "★★fr★★"],
+                               op_SD: ["-- Please fr Select --", "★fr", "★fr★", "★fr★★", "★★fr★★"],
+                               op_AD: ["-- Please fr Select --", "★fr", "★fr★", "★fr★★", "★★fr★★"],
+                               op_TU: ["-- Please fr Select --", "★fr", "★fr★", "★fr★★", "★★fr★★"],
+                               op_PW: ["-- Please fr Select --", "★fr", "★fr★", "★fr★★", "★★fr★★"],
+                               op_CN: ["-- Please fr Select --", "★fr", "★fr★", "★fr★★", "★★fr★★"],}};
+      var it_json = { label: { SampleRate: "it_SR", AlarmType: "it_AT", StartDelay: "it_SD", AlarmDelay: "it_AD", TempUnit: "it_TU", AlarmLimit: "it_AL", Password: "it_PW", CompanyName: "it_CN", },
+                      option:{ op_SR: ["-- Please it Select --", "★it", "★it★", "★it★★", "★★it★★"],
+                               op_AT: ["-- Please it Select --", "★it", "★it★", "★it★★", "★★it★★"],
+                               op_SD: ["-- Please it Select --", "★it", "★it★", "★it★★", "★★it★★"],
+                               op_AD: ["-- Please it Select --", "★it", "★it★", "★it★★", "★★it★★"],
+                               op_TU: ["-- Please it Select --", "★it", "★it★", "★it★★", "★★it★★"],
+                               op_PW: ["-- Please it Select --", "★it", "★it★", "★it★★", "★★it★★"],
+                               op_CN: ["-- Please it Select --", "★it", "★it★", "★it★★", "★★it★★"],}};
+      var es_json = { label: { SampleRate: "es_SR", AlarmType: "es_AT", StartDelay: "es_SD", AlarmDelay: "es_AD", TempUnit: "es_TU", AlarmLimit: "es_AL", Password: "es_PW", CompanyName: "es_CN", },
+                      option:{ op_SR: ["-- Please es Select --", "★es", "★es★", "★es★★", "★★es★★"],
+                               op_AT: ["-- Please es Select --", "★es", "★es★", "★es★★", "★★es★★"],
+                               op_SD: ["-- Please es Select --", "★es", "★es★", "★es★★", "★★es★★"],
+                               op_AD: ["-- Please es Select --", "★es", "★es★", "★es★★", "★★es★★"],
+                               op_TU: ["-- Please es Select --", "★es", "★es★", "★es★★", "★★es★★"],
+                               op_PW: ["-- Please es Select --", "★es", "★es★", "★es★★", "★★es★★"],
+                               op_CN: ["-- Please es Select --", "★es", "★es★", "★es★★", "★★es★★"],}};
+      var pt_json = { label: { SampleRate: "pt_SR", AlarmType: "pt_AT", StartDelay: "pt_SD", AlarmDelay: "pt_AD", TempUnit: "pt_TU", AlarmLimit: "pt_AL", Password: "pt_PW", CompanyName: "pt_CN", },
+                      option:{ op_SR: ["-- Please pt Select --", "★pt", "★pt★", "★pt★★", "★★pt★★"],
+                               op_AT: ["-- Please pt Select --", "★pt", "★pt★", "★pt★★", "★★pt★★"],
+                               op_SD: ["-- Please pt Select --", "★pt", "★pt★", "★pt★★", "★★pt★★"],
+                               op_AD: ["-- Please pt Select --", "★pt", "★pt★", "★pt★★", "★★pt★★"],
+                               op_TU: ["-- Please pt Select --", "★pt", "★pt★", "★pt★★", "★★pt★★"],
+                               op_PW: ["-- Please pt Select --", "★pt", "★pt★", "★pt★★", "★★pt★★"],
+                               op_CN: ["-- Please pt Select --", "★pt", "★pt★", "★pt★★", "★★pt★★"],}};
+      
+      // Initialization
+      translateDropDownOptions(en_json);
+
+      // Event
+      document.querySelector('#sel_lang').addEventListener('change', updateLanguage);
+
+      // Function
+      function setOptions(selectId, optionsArr) {
+        if (selectId) {
+          let select = document.getElementById(selectId);
+          select.innerText = null;
+          for( let i = 0 ; i < optionsArr.length ; i++ ){
+            select.add(new Option(optionsArr[i]));
+          }
+        }
+      }
+
+      function updateLanguage(e) {
+        let lang = e.target.value;
+        switch(lang){
+          case "en":
+            translate(en_json);
+            translateDropDownOptions(en_json);
+            break;
+          case "de":
+            translate(de_json);
+            translateDropDownOptions(de_json);
+            break;
+          case "fr":
+            translate(fr_json);
+            translateDropDownOptions(fr_json);
+            break;
+          case "it":
+            translate(it_json);
+            translateDropDownOptions(it_json);
+            break;
+          case "es":
+            translate(es_json);
+            translateDropDownOptions(es_json);
+            break;
+          case "pt":
+            translate(pt_json);
+            translateDropDownOptions(pt_json);
+            break;
+          default:
+            console.error("Unknown Language -", lang);
+        }
+      }
+
+      function translate(dictionary) {
+        let elements = document.querySelectorAll("[data-translate]");
+        for( let i = 0 ; i < elements.length ; i++ ){
+          let word = dictionary["label"][elements[i].dataset.translate.split('.')[1]];
+          if (word) {
+            elements[i].innerText = word;
+          }
+        }
+      }
+
+      function translateDropDownOptions(dictionary) {
+        let elements = document.querySelectorAll("[op]");
+        for( let i = 0 ; i < elements.length ; i++ ){
+          let option = elements[i].getAttribute("op");
+          if (option) {
+            setOptions(elements[i].getAttribute('id'),dictionary["option"][option]);
+          }
+        }
+      }
+
+      function saveFile() {
+          let data = '';
+          let elements = document.querySelectorAll("[data-output]");
+          for( let i = 0 ; i < elements.length ; i++ ){
+            data = data + elements[i].value + '\r\n';
+          }
+          
+          const textToBLOB = new Blob([data], { type: 'text/plain' });
+          const sFileName = 'formData.txt';	   // The file to save the data.
+          
+          let newLink = document.createElement("a");
+          newLink.download = sFileName;
+
+          if (window.webkitURL != null) {
+              newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+          }
+          else {
+              newLink.href = window.URL.createObjectURL(textToBLOB);
+              newLink.style.display = "none";
+              document.body.appendChild(newLink);
+          }
+          newLink.click(); 
+      }
+
+    </script>
+  </body>
+</html>
